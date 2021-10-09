@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="~/Content/css.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            width: 1000px;
+            font-family: Tahoma;
+            font-size: 13px;
+            margin: 0px auto;
+        }
+
+        #menu_top {
+            width: 1000px;
+            height: 60px;
+            border: 1px solid tomato;
+            color: #0f210f;
+        }
+
+        #banner {
+            width: 1000px;
+            height: 200px;
+            border: 1px solid #cece29;
+            color: #22d622;
+        }
+
+        #main {
+            margin-top: 20px;
+        }
+
+            #main #left {
+                width: 700px;
+                float: left;
+                min-height: 400px;
+                color: red;
+            }
+
+            #main #right {
+                width: 300px;
+                float: left;
+                min-height: 400px;
+            }
+
+        #footer {
+            background: black;
+            width: 1000px;
+            height: 60px;
+            text-align: center;
+            color: white;
+            clear: left;
+            line-height: 60px;
+        }
+
+        #menu_top ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+            #menu_top ul li {
+                list-style: none;
+                float: left;
+            }
+
+                #menu_top ul li a {
+                    color: blue light;
+                    text-decoration: none;
+                    height: 60px;
+                    line-height: 60px;
+                    padding: 0px 20px 0px 20px;
+                    border-right: 1px solid tomato;
+                    display: block;
+                }
+
+        .ornament {
+            background: #12e8e8;
+        }
+
+        #banner img {
+            width: 1000px;
+        }
+
+        #main #left ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+            #main #left ul li {
+                list-style: none;
+                clear: left;
+                border-bottom: 1px solid #ccc;
+                float: left;
+                margin-bottom: 20px;
+            }
+
+                #main #left ul li img {
+                    float: left;
+                    height: auto;
+                    margin-right: 10px;
+                    margin-bottom: 20px;
+                }
+
+                #main #left ul li h3 {
+                    margin-top: 0px;
+                    font-size: 25px;
+                }
+
+        #main #right .menu_right ul {
+            padding: 0px;
+            margin: 0px;
+        }
+
+            #main #right .menu_right ul li {
+                list-style: none;
+            }
+
+        #main #right .menu_right h3 {
+            background: #2FE3BC url(../images/iconmenu.png) no-repeat;
+            color: #D8265F;
+            font-size: 14px;
+            line-height: 40px;
+            margin-top: 0px;
+            /* lùi đầu dòng */
+            text-indent: 25px;
+        }
+
+        #main #right .menu_right ul li a {
+            display: block;
+            text-decoration: none;
+            line-height: 32px;
+            border-bottom: 1px solid tomato;
+            background: url(../rightbr.png) no-repeat;
+        }
+
+        p {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    @*
+            <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    *@
+
+    <div id="menu_top">
+        <ul>
+            <li><a href="https://bountysneakers.com" title="Trang Chủ" class="ornament">TrangChủ</a></li>
+            <li>
+                <a href="https://bountysneakers.com/danh-muc/giay-chinh-hang/giay-adidas-nam" title="Giới thiệu ">
+                    Giới
+                    thiệu
+                </a>
+            </li>
+            <li><a href="https://bountysneakers.com/danh-muc/adidas" title="Tin tức ">Tin tức</a></li>
+            <li><a href="https://bountysneakers.com/danh-muc/nike" title="Sản phẩm">Sản phẩm</a></li>
+            <li><a href="https://bountysneakers.com/cam-ket-va-bao-hanh" title="Khuyến mãi">Khuyến mãi</a></li>
+            <li><a href="#" title="Liên hệ">Liên hệ</a></li>
+            <li><a href="#" title="Khác">Khác</a></li>
+        </ul>
+    </div>
+    <div id="banner">
+        <img src="~/Content/banner.jpg" height="200px"></img>
+    </div>
+    <div id="main">
+        <div id="left">
+            @RenderBody()
+        </div>
+        <div id="right">
+            <div class="menu_right">
+                <ul>
+                    <h3>Danh Mục </h3>
+                    <li><a href="">Rượu</a></li>
+                    <li><a href="">CaFe</a></li>
+                    <li><a href="">Sinh Tố</a></li>
+                    <li><a href="">Yagout</a></li>
+                    <li><a href="">Trà Chanh</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>ABC Co, Ltd. 2018</p>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿@using WebBao.Models;
+@model IEnumerable<SanPham>
+
+@{
+    ViewBag.Title = "KQTimKiem";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<div class="col-md-9 product1">
+    <div class=" bottom-product">
+        @foreach (var item in Model.OrderBy(n => n.DonGia))
+        {
+            <div class="col-md-4 bottom-cd simpleCart_shelfItem">
+                <div class="product-at ">
+                    <a href="@Url.Action("XemChiTiet", "SanPham", new { id=item.MaSP})">
+                        <img class="img-responsive" src="@Url.Content("~/Content/anh/" + item.HinhAnh)" alt="" style="width:200px; height:200px;">
+                        <div class="pro-gri d">
+                            <span class="buy-in">Đặt Mua</span>
+                        </div>
+                    </a>
+                </div>
+                <p class="tun">@item.TenSP</p>
+                @* Thẻ a nút thêm *@
+                <a href="@Url.Action("ThemGioHang", "GioHang",new { @MaSP = item.MaSP, @strURL = Request.Url.ToString()})" class="item_add">
+                    <p class="number item_price"><i> </i>@item.DonGia.Value.ToString("#,##")</p>
+                </a>
+                @Ajax.ActionLink("Thêm vào giỏ use Ajax", "ThemGioHangAjax", "GioHang", new { @MaSP = item.MaSP, @strURL = Request.Url.ToString() }
+                 , new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "divGioHang",
+                        InsertionMode = InsertionMode.Replace,
+                        LoadingElementId = "divLoading",
+
+                    }, null);
+            </div>
+        }
+        <div class="clearfix"> </div>
+    </div>
+
+</div>

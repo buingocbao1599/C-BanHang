@@ -1,0 +1,70 @@
+﻿@using WebBao.Models;
+@model ThanhVien
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<div class=" container">
+    <div class=" register">
+        <h1>Đăng Ký</h1>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <hr />
+            @Html.ValidationSummary(true)
+         <div class="col-md-6 register-top-grid">
+        <h3>Thông tin người dùng</h3>
+        <div>
+            <span>@Html.LabelFor(model => model.TaiKhoan, new { @class = "control-label col-md-2"})</span>
+            @Html.TextBoxFor(model => model.TaiKhoan)
+            @Html.ValidationMessageFor(model => model.TaiKhoan)
+        </div>
+        <div>
+            <span>Họ và Tên</span>
+            @Html.TextBox("HoTen")
+        </div>
+        <div>
+            <span>Địa chỉ</span>
+            @Html.TextBox("DiaChi")
+        </div>
+        <div>
+            <span>Email</span>
+            @Html.TextBox("Email")
+        </div>
+        <div>
+            <span>Số điện thoại</span>
+            @Html.TextBox("SoDienThoai")
+        </div>
+        <a class="news-letter" href="#">
+            <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>ĐĂNG KÝ ĐỂ NHẬN BẢN TIN</label>
+        </a>
+    </div>
+    <div class="col-md-6 register-bottom-grid">
+        <h3>Thông tin Đăng Nhập</h3>
+
+        <div>
+            <span>Mật Khẩu</span>
+            @Html.Password("MatKhau")
+        </div>
+        <div>
+            <span>Xác nhận Mật khẩu</span>
+            @Html.Password("XacNhanMatKhau")>
+        </div>
+        <div>
+            <span>Câu Hỏi</span>
+            @Html.DropDownList("CauHoi")
+        </div>
+        <div>
+            <span>Câu Trả Lời</span>
+            @Html.TextBox("CauTraLoi")
+        </div>
+        <input type="submit" value="Đã Hoàn Thành">
+    </div>
+            <div class="clearfix"> </div>
+        }
+    </div>
+</div>
+<h1 style="color: red;">@ViewBag.ThongBao</h1>
+

@@ -1,0 +1,22 @@
+﻿@using WebBao.Models;
+@model List<ThanhVien>
+
+
+@{
+    ViewBag.Title = "GroupDuLieu";
+}
+@* Cách Group dữ liệu*@
+
+@foreach (var GroupLTV in Model.GroupBy(n => n.MaLoaiTV))
+{
+    <div>
+        @GroupLTV.Key
+    </div>
+    foreach(var item in GroupLTV)
+     {
+         <p> @item.TaiKhoan </p>
+     }
+}
+
+
+

@@ -1,0 +1,42 @@
+﻿@using WebBao.Models
+@{
+    ViewBag.Title = "SanPham1";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@{ 
+    IEnumerable<SanPham> lstSP = (IEnumerable<SanPham>)ViewBag.ListSP;
+    IEnumerable<SanPham> lstDT = (IEnumerable<SanPham>)ViewBag.ListDT;
+    @*
+    IEnumerable<SanPham> lstMTB = ViewBag.ListDT as IEnumerable<SanPham>;
+    *@
+    }
+
+@*--chèn 1 partial view vào 1 view *@
+
+<div class="container">
+    <div class="content-top">
+        <h1>LapTop</h1>
+        @* Cách 1 *@
+        @Html.Partial("SanPhamPartial", lstSP)
+
+    </div>
+</div>
+<div class="container">
+    <div class="content-top">
+        <h1>Điện Thoại</h1>
+        
+        @Html.Partial("SanPhamPartial", lstDT)
+
+    </div>
+</div>
+
+
+        @*
+            Cách 2
+            Sau "SanPhamPartial", --- : --- ở đây là controller chứa partial, vì ở đây cùng chung ở
+            SanPhamController nên ta k cần thêm sau dấu phẩy
+
+            @Html.Action("SanPhamParital")
+        *@
+

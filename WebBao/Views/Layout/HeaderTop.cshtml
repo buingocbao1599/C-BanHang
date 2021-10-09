@@ -1,0 +1,38 @@
+﻿@using WebBao.Models;
+
+<div class="header-top">
+    <div class="container">
+        <div class="search">
+            @*tạo form tìm kiếm*@
+            @using (Html.BeginForm("KQTimKiem", "TimKiem"))
+            {
+                <input type = "text" name = "sTuKhoa" placeholder = "Nhập tên sản phẩm tìm kiếm" >
+                <input type = "submit" value = "Tìm Kiếm" >
+             }
+            </div>
+            <div class="header-left">
+                <ul>
+                    @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+                    {
+                        ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+                        <div style="width: 100px; color: red;">
+                            <span> Chào @tv.HoTen </span>
+                        </div>
+
+                        @Html.ActionLink("Đăng Xuất", "DangXuat", "Home")
+                    }
+                    else
+                    {
+                        <li><a id="" href="@Url.Action("Login", "KhachHang")">Đăng Nhập</a></li>
+                        <li><a href="@Url.Action("DangKy", "Home")">Đăng Ký</a></li>
+                    }
+
+
+                </ul>
+                @*Chen partial view giỏ hàng vào layout (Tách icon giỏ hàng sang 1 partial view mới)*@
+                @Html.Action("GioHangPartial", "GioHang")
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>

@@ -1,0 +1,76 @@
+﻿@using WebBao.Models;
+@model ItemGioHang
+
+
+@{
+    ViewBag.Title = "SuaGioHang";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@{ 
+    List<ItemGioHang> lstGioHang = ViewBag.GioHang as List<ItemGioHang>;
+
+}
+<table class="table">
+    <tr>
+        <td>Mã SP</td>
+        <td>Tên SP</td>
+        <td>Hình Ảnh</td>
+        <td>Số Lượng</td>
+        <td>Đơn Giá</td>
+        <td>Thành Tiền</td>
+        <td></td>
+    </tr>
+    @foreach (var item in lstGioHang)
+    {
+        // sản phẩm có mã sản phẩm được chỉnh sửa gửi từ tham số trang Xem Giỏ Hàng
+        if (Model.MaSP == item.MaSP)
+        {
+            using (Html.BeginForm("CapNhatGioHang", "GioHang"))
+            {
+                <tr>
+                    <td>@item.MaSP @Html.Hidden("MaSP", item.MaSP)</td>
+                    <td>@item.TenSP</td>
+                    <td><img src="@Url.Content("~/Content/anh/" + item.HinhAnh)" width="50" height="50" /></td>
+                    <td>
+                        @Html.TextBox("SoLuong", item.SoLuong, new { @class="SoLuongThayDoi"})
+                        <p id="TB_SoLuongThayDoi"></p>
+                    </td>
+                    <td>@item.DonGia.ToString("#,##") đồng</td>
+                    <td>@item.ThanhTien.ToString("#,##") đồng</td>
+                    <td><input type="submit" value="Cập Nhật" id="btnCapNhatGH"/>
+                       
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>@item.MaSP</td>
+                <td>@item.TenSP</td>
+                <td><img src="@Url.Content("~/Content/anh/" + item.HinhAnh)" width="50" height="50" /></td>
+                <td>@item.SoLuong</td>
+                <td>@item.DonGia.ToString("#,##") đồng</td>
+                <td>@item.ThanhTien.ToString("#,##") đồng</td>
+                <td>@Html.ActionLink(" Sửa ", "SuaGioHang", new { @MaSP = item.MaSP })
+                    @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP})
+                </td>
+            </tr>
+        }
+
+
+    }
+</table>
+
+@*Kiểm tra số lượng khi cập nhật giỏ hàng*@
+<script>
+    $("#btnCapNhatGH").click(function () {
+        // tạo 1 biến để có thể lưu text nhập của ô cập nhật
+        var SoLuong = $('.SoLuongThayDoi').val();
+        if (isNaN(SoLuong) == true || SoLuong < 0) {
+            $('#TB_SoLuongThayDoi').text("Số lượng bạn nhập không hợp lê")
+            return false;
+        }
+    });
+</script>

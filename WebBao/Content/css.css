@@ -1,0 +1,115 @@
+
+body{
+    width:1000px;
+    font-family: Tahoma;
+    font-size:13px;
+    margin: 0px auto;	
+}
+#menu_top{
+    width:1000px;
+    height:60px;
+    border: 1px solid tomato;
+    color: #0f210f;
+}
+#banner{
+    width:1000px;
+    height:200px;
+    border: 1px solid #cece29;
+    color: #22d622;
+    
+}
+#main{
+    margin-top: 20px;
+}
+#main #left{
+    width:700px;
+    float:left; 
+    min-height:400px;
+    color: red;
+}
+#main #right{
+    width:300px;
+    float:left;
+    min-height:400px;
+}
+#footer{
+    background: black;
+    width: 1000px;
+    height:60px;
+    text-align: center;
+    color: white;
+    clear: left;
+    line-height:60px;
+}
+#menu_top ul{
+    margin:0px;
+    padding: 0px;
+}
+#menu_top ul li{
+    list-style:none;
+    float: left;
+}
+#menu_top ul li a{
+    color: blue light;
+    text-decoration: none;
+    height:60px;
+    line-height: 60px;
+    padding: 0px 20px 0px 20px;
+    border-right:1px solid tomato; 
+    display: block;
+}
+.ornament{
+    background: #12e8e8;
+}
+#banner img{
+    width:1000px;
+        
+}
+#main #left ul{
+    margin:0px;
+    padding: 0px;
+}
+#main #left ul li{
+    list-style: none;
+    clear: left;
+    border-bottom: 1px solid #ccc;
+    float:left;
+    margin-bottom:20px;
+}
+#main #left ul li img{
+    float:left;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+#main #left ul li h3{
+    margin-top:0px;
+    font-size: 25px;
+}
+#main #right .menu_right ul{
+    padding:0px;
+    margin:0px;
+}
+#main #right .menu_right ul li{
+    list-style:none;
+}
+#main #right .menu_right h3{
+    background: #2FE3BC url(../images/iconmenu.png) no-repeat;
+    color:#D8265F;
+    font-size: 14px;
+    line-height:40px;
+    margin-top:0px;
+    /* lùi đầu dòng */
+    text-indent:25px;   
+}
+#main #right .menu_right ul li a{
+    display: block;
+    text-decoration: none;
+    line-height: 32px;
+    border-bottom: 1px solid tomato;
+    background: url(../rightbr.png) no-repeat;
+}
+
+#main #left p{
+    color: red;
+}

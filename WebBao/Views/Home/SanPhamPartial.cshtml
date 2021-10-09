@@ -1,0 +1,26 @@
+﻿@using WebBao.Models;
+@model IEnumerable<SanPham>
+
+        <div class="grid-in">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4 grid-top">
+                    <a href="@Url.Action("XemChiTiet", "SanPham", new { id=item.MaSP})" class="b-link-stripe b-animate-go  thickbox">
+                        <img class="img-responsive" src="@Url.Content("~/Content/anh/" + item.HinhAnh)" alt="">
+                        <div class="b-wrapper">
+                            <h3 class="b-animate b-from-left    b-delay03 ">
+                                <span>@item.MoTa.Substring(0, 5)</span>
+                            </h3>
+                        </div>
+                    </a>
+                    <p><a href="single.html">@item.TenSP</a></p>
+                </div>
+
+                @*
+                    <div><img src="@Url.Content("~/Content/anh/" + item.HinhAnh)"/></div>
+                    <div>@item.TenSP</div>
+                *@
+             }
+        </div>
+    

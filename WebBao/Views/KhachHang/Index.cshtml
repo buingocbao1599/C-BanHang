@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebBao.Models.KhachHang>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <table border="1">
+            <tr>
+                <td>Mã Khách Hàng</td>
+                <td>Tên Khách Hàng</td>
+                <td>Địa chỉ</td>
+                <td>Email</td>
+                <td>Số Điện Thoại</td>
+
+                @* chạy vòng lặp lấy các đối tượng từ list model*@
+
+                @foreach(var item in Model)
+                 {
+            <tr>
+                <td>@item.MaKH</td>
+                <td>@item.TenKH</td>
+                <td>@item.DiaChi</td>
+                <td>@item.Email</td>
+                <td>@item.SoDienThoai</td>
+            </tr>
+                 }
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

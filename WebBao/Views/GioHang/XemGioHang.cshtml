@@ -1,0 +1,140 @@
+﻿@using WebBao.Models;
+@model List<ItemGioHang>
+
+
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+    <h1 style="color: #4cff00;">Đơn hàng đã được đặt---Giỏ Hàng rỗng !</h1>
+}
+
+else
+{
+    <div style="float: right; width: 700px">
+        <table class="table">
+            <tr>
+                <td>Mã SP</td>
+                <td>Tên SP</td>
+                <td>Hình Ảnh</td>
+                <td>Số Lượng</td>
+                <td>Đơn Giá</td>
+                <td>Thành Tiền</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td><img src="@Url.Content("~/Content/anh/" + item.HinhAnh)" width="50" height="50" /></td>
+                    <td>@item.SoLuong</td>
+                    <td>@item.DonGia.ToString("#,##") đồng</td>
+                    <td>@item.ThanhTien.ToString("#,##") đồng</td>
+                    <td>
+                        @Html.ActionLink(" Sửa ", "SuaGioHang", new { @MaSP = item.MaSP })
+                        @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    if (Session["TaiKhoan"] == null)
+    {
+        <div class="ThongTinMuaHang">
+            <table align="center" class="table">
+                <tr>
+                    <td align="center" colspan="2"><b>Thông tin khách hàng</b></td>
+                </tr>
+                <tr>
+                    <td><b>Họ Tên</b></td>
+                    <td>
+                        @Html.TextBox("TenKH")
+                        <p id="TB_HoTen"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Địa Chỉ</b></td>
+                    <td>
+                        @Html.TextArea("DiaChi")
+                        <p id="TB_DiaChi"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Email</b></td>
+                    <td>
+                        @Html.TextBox("Email")
+                        <p id="ktEmail"></p> 
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Điện Thoại</b></td>
+                    <td>
+                        @Html.TextBox("SoDienThoai")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>@Html.Hidden("MaThanhVien", 1)</td>
+                </tr>
+            </table>
+        </div>
+    }
+    using (Html.BeginForm("DatHang", "GioHang"))
+    {
+        <div class="divDatHang" style="text-align: right;">
+            <input type="submit" value="Đặt Hàng" class="btn btn-danger" id="btnDatHang" />
+
+
+        </div>
+
+    }
+}
+<style>
+    .table {
+        width: 700px
+    }
+    #
+</style>
+
+@* Kiểm tra validation thong qua Jquery*@
+<script>
+    $("#btnDatHang").click(function () {
+        var loi = 0;
+        if ($("#TenKH").val() == "") {
+            $("#TB_HoTen").text("Tên khách hàng không được bỏ trống");
+            loi++;
+
+        }
+        else {
+            $("#TB_HoTen").text("");
+        }
+        
+        if ($("#DiaChi").val() == "") {
+            $("#TB_DiaChi").text("Tên địa chỉ không được bỏ trống");
+            loi++;
+        }
+        else {
+            $("#TB_DiaChi").text("");
+        }
+
+        dinhdang = /^[0-9A-Za-z]*@@[\w\d]$/;
+        KTEmail = dinhdang.test($("#Email").val());
+        if (KTEmail != null) {
+            $('#ktEmail').text("Email không hợp lệ !");
+            loi++;
+        }
+        if (loi != 0) {
+            return false;
+        }
+        
+    });
+</script>
+
+
+
+
